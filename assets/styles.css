@@ -1,0 +1,74 @@
+html, body {
+  overflow-x: hidden;
+}
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+.container {
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+}
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+.input-container {
+    max-width: 100%;
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+@media (min-width: 601px) {
+  .input-container {
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+}
+.route {
+    color: #333;
+    text-decoration: none;
+}
+#tiktokUrl, #shareBtn {
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+#tiktokUrl {
+    flex: 1;
+    padding: 10px;
+    background-color: white;
+}
+#shareBtn {
+    display: none;
+    color: #777;
+    cursor: pointer;
+    width: 90px;
+    color: white;
+    background-color: #333;
+}
+#shareBtn:hover {
+    background-color: #444;
+}
+iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    border-radius: 8px;
+}
+#videoContainer {
+    max-width: 500px;
+    margin: 0 auto;
+}
+#llm:hover {
+  cursor: pointer;
+}
