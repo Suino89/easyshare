@@ -3,11 +3,7 @@ const tiktokUrlInput = document.getElementById('tiktokUrl');
 const videoContainer = document.getElementById('videoContainer');
 const shareBtn = document.getElementById('shareBtn');
 const title = document.getElementById('title');
-const lisciamiLeMele = new Audio('assets/audio.mp3');
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+const audio = new Audio('assets/audio.mp3');
 
 function extractVideoId(url) {
     const match = url.match(/(?:vm\.|www\.)?tiktok\.com\/(?:.*?video\/)?(\d+)/);
@@ -24,7 +20,6 @@ function updatePageUrl(videoId) {
 function handleTikTokInput(event) {
     const url = event.target.value.trim();
     const currVideoId = extractVideoId(url);
-
     if (currVideoId) {
         updatePageUrl(currVideoId);
         showShareButton(currVideoId);
@@ -38,7 +33,6 @@ function showShareButton(videoId) {
         const pageUrl = updatePageUrl(videoId);
         await navigator.clipboard.writeText(pageUrl);
         shareBtn.innerText = "Copiato✔️";
-        await sleep(500);
         renderPlayer(videoId);
     };
 }
@@ -54,7 +48,7 @@ function renderPlayer(videoId) {
 }
 
 // Main logic
-document.getElementById('llm').addEventListener('click', () => lisciamiLeMele.play());
+document.getElementById('llm').addEventListener('click', () => audio.play());
 
 if (!videoId) {
     tiktokUrlInput.addEventListener('input', handleTikTokInput);
