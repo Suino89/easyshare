@@ -5,6 +5,13 @@ const shareBtn = document.getElementById('shareBtn');
 const title = document.getElementById('title');
 const audio = new Audio('assets/audio.mp3');
 
+function isMobileDevice() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const mobileRegex = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|BlackBerry|BB10|IEMobile|Mobile|webOS|Kindle|Silk/i;
+    const tabletRegex = /iPad|Android(?!.*Mobile)|Tablet|Kindle|PlayBook/i;
+    return mobileRegex.test(userAgent) || tabletRegex.test(userAgent);
+}
+
 function extractVideoId(url) {
     try {
         const match = url.match(/(?:vm\.|www\.)?tiktok\.com\/(?:.*?video\/)?(\d+)/);
@@ -37,7 +44,7 @@ function showShareButton(videoId) {
             const videoPageUrl = makePageUrl(videoId);
             await navigator.clipboard.writeText(videoPageUrl);
             shareBtn.innerText = "📋✅";
-            if (navigator.share) { // Check if the device supports Web Share API
+            if (isMobileDevice() && navigator.share) {
                 await navigator.share({
                     title: 'Condividi',
                     url: videoPageUrl
